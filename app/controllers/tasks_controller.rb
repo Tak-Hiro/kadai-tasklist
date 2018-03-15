@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :require_user_logged_in
+  before_action :current_user, only: [:destroy]
   
   def index
     @tasks = Task.all.page(params[:page])
